@@ -1,0 +1,14 @@
+name: h3q-ci
+on:
+  pull_request:
+  push:
+jobs:
+  h3q-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: run
+        run: |
+          echo "H3Q-CI-START $(date -u +%FT%T.%NZ) sha=$GITHUB_SHA event=$GITHUB_EVENT_NAME ref=$GITHUB_REF"
+          sleep 45
+          bash ci/check.sh
